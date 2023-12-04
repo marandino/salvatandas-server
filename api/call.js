@@ -7,7 +7,7 @@ const Twilio = require("twilio")(ACCOUNT_SID, AUTH_TOKEN, {
 });
 
 export default async function handler(req, res) {
-  const { phone } = req.body;
+  const { phone } = req?.body;
   if (!phone) res.status(400).json({ message: "Phone number is missing" });
   try {
     const call = await Twilio.calls.create({
